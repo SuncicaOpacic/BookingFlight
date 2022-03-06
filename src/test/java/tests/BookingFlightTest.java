@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.FiltersPage;
 import pages.FlightsPage;
+import pages.TicketTypePage;
 
 
 public class BookingFlightTest extends BaseTest {
@@ -35,7 +36,7 @@ public class BookingFlightTest extends BaseTest {
         BasePage basePage = new BasePage(driver);
         FlightsPage flightsPage = new FlightsPage(driver);
         FiltersPage filtersPage = new FiltersPage(driver);
-
+        TicketTypePage ticketTypePage = new TicketTypePage(driver);
 
         flightsPage.WhereFrom(whereFromString);
         Thread.sleep(1000);
@@ -46,6 +47,8 @@ public class BookingFlightTest extends BaseTest {
         filtersPage.deselectAirline(airline);
         filtersPage.clickSeeFlightButton();
         filtersPage.clickSelectButton();
+        ticketTypePage.selectTicketType();
+        ticketTypePage.clickNxtButton();
 
 
     }
