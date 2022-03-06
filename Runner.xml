@@ -13,6 +13,11 @@
     <parameter name="departDate" value="2022-03-09"/>
     <parameter name="returnDate" value="2022-03-19"/>
     <parameter name="airline" value="Air France"/>
+    <parameter name="email" value="123asd@gmail.com"/>
+    <parameter name="phoneNumber" value="11111111"/>
+    <parameter name="firstName" value="John"/>
+    <parameter name="lastName" value="Johnson"/>
+    <parameter name="genderSelectValue" value="M"/>
 
     <test name="BookingFlightTest">
 

@@ -1,13 +1,13 @@
 package tests;
 
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.BasePage;
-import pages.FiltersPage;
-import pages.FlightsPage;
-import pages.TicketTypePage;
+import pages.*;
+
+import java.io.IOException;
 
 
 public class BookingFlightTest extends BaseTest {
@@ -23,20 +23,20 @@ public class BookingFlightTest extends BaseTest {
     @AfterMethod
     public void tearDown() {
 
-//        quit();
+        quit();
     }
 
     @Test
 
     @Parameters
-            ({"whereFromString", "whereToString", "departDate", "returnDate", "airline"})
+            ({"whereFromString", "whereToString", "departDate", "returnDate", "airline", "email", "phoneNumber", "firstName", "lastName", "genderSelectValue"})
 
-    public void bookingFlightTest(String whereFromString, String whereToString, String departDate, String returnDate, String airline) throws InterruptedException{
+    public void bookingFlightTest(String whereFromString, String whereToString, String departDate, String returnDate, String airline, String email, int phoneNumber, String firstName, String lastName, String genderSelectValue) throws InterruptedException, IOException {
 
-        BasePage basePage = new BasePage(driver);
         FlightsPage flightsPage = new FlightsPage(driver);
         FiltersPage filtersPage = new FiltersPage(driver);
         TicketTypePage ticketTypePage = new TicketTypePage(driver);
+        WhoIsFlyingPage whoIsFlyingPage = new WhoIsFlyingPage(driver);
 
         flightsPage.WhereFrom(whereFromString);
         Thread.sleep(1000);
@@ -49,8 +49,14 @@ public class BookingFlightTest extends BaseTest {
         filtersPage.clickSelectButton();
         ticketTypePage.selectTicketType();
         ticketTypePage.clickNxtButton();
-
-
+        whoIsFlyingPage.enterEmail(email);
+        whoIsFlyingPage.enterPhoneNumber(phoneNumber);
+        whoIsFlyingPage.enterFirstName(firstName);
+        whoIsFlyingPage.enterLastName(lastName);
+        whoIsFlyingPage.selectGender(genderSelectValue);
+        reportScreenshot("PassagerDetails","Passanger details");
+        whoIsFlyingPage.clickNextButton();
+        String URL = driver.getCurrentUrl();
+        Assert.assertTrue(URL.contains("https://flights.booking.com/checkout/"));
     }
-
 }

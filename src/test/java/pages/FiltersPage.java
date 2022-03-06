@@ -36,6 +36,7 @@ public class FiltersPage extends BasePage {
     }
 
     public void clickSelectButton() throws InterruptedException {
+        scroll(selectButton);
         clickElement(selectButton);
     }
 }

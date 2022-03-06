@@ -9,8 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 
 public class CommonMethods {
     WebDriver driver;
@@ -69,10 +67,6 @@ public class CommonMethods {
 
     public void scroll(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true)", element);
-    }
-
-    public void scrollByPixels(String pixels) {
-        ((JavascriptExecutor) driver).executeScript("window.scrollBy(0," + pixels + ")");
     }
 
     //Selenium wrapper methods END

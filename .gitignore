@@ -3,3 +3,5 @@
 /.idea/
 /target/
 /allure-results/
+/screenshots/
+/allure-report/
