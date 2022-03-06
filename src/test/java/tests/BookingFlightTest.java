@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import pages.BasePage;
+import pages.FiltersPage;
 import pages.FlightsPage;
 
 
@@ -21,17 +22,19 @@ public class BookingFlightTest extends BaseTest {
     @AfterMethod
     public void tearDown() {
 
-        quit();
+//        quit();
     }
 
     @Test
 
     @Parameters
-            ({"whereFromString", "whereToString", "departDate", "returnDate"})
-    public void bookingFlightTest(String whereFromString, String whereToString, String departDate, String returnDate) throws InterruptedException{
+            ({"whereFromString", "whereToString", "departDate", "returnDate", "airline"})
+
+    public void bookingFlightTest(String whereFromString, String whereToString, String departDate, String returnDate, String airline) throws InterruptedException{
 
         BasePage basePage = new BasePage(driver);
         FlightsPage flightsPage = new FlightsPage(driver);
+        FiltersPage filtersPage = new FiltersPage(driver);
 
 
         flightsPage.WhereFrom(whereFromString);
@@ -39,6 +42,10 @@ public class BookingFlightTest extends BaseTest {
         flightsPage.WhereTo(whereToString);
         flightsPage.setDates(departDate, returnDate);
         flightsPage.clickSearch();
+        filtersPage.selectStopsFliter();
+        filtersPage.deselectAirline(airline);
+        filtersPage.clickSeeFlightButton();
+        filtersPage.clickSelectButton();
 
 
     }

@@ -12,6 +12,7 @@
     <parameter name="whereToString" value="Amsterdam"/>
     <parameter name="departDate" value="2022-03-09"/>
     <parameter name="returnDate" value="2022-03-19"/>
+    <parameter name="airline" value="Air France"/>
 
     <test name="BookingFlightTest">
 
